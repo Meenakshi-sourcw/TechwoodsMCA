@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">techwoodsmca</string>
+    <string name="already_registered_n_click_here_to_login">Already Registered? \n Click Here to Login</string>
+    <string name="register_user">Register User</string>
+    <string name="enter_password">Enter password</string>
+    <string name="password">Password</string>
+    <string name="enter_email">Enter email</string>
+    <string name="email">Email</string>
+    <string name="enter_username">Enter username</string>
+    <string name="username">Username</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+    <string name="click_here_to_register">Click here to Register</string>
+    <string name="techwoods_is_a_national_level_symposium_conducted_by_the_department_of_computer_science">Techwoods is a National Level Symposium conducted by the Department of Computer Science.</string>
+    <string name="edit_profile_button_text" />
+    <string name="profile_bio" />
+    <string name="profile_picture_description" />
+    <string name="profile_name" />
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
+    <string name="register">REGISTER</string>
+    <string name="already_an_user_login">Already an user? Login</string>
+</resources>
