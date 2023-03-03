@@ -5,24 +5,22 @@
     android:id="@+id/participantsLayout">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <androidx.cardview.widget.CardView
-            android:layout_width="370dp"
-            android:layout_height="720dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:gravity="center_horizontal"
             android:background="@drawable/custom_edittext"
-            app:cardCornerRadius="30dp"
-            >
+            android:gravity="center_horizontal"
+            app:cardCornerRadius="30dp">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:id="@+id/layout">
 
 
 
@@ -110,16 +108,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"/>
 
-                <Button
-                    android:text="Submit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_gravity="center_horizontal"/>
+
 
 
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </RelativeLayout>
+
 </ScrollView>
