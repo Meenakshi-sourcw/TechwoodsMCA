@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Techwoodsmca"
         tools:targetApi="31">
         <activity
+            android:name=".Eventregister"
+            android:exported="false" />
+        <activity
             android:name=".Registerevent"
             android:exported="false" />
         <activity

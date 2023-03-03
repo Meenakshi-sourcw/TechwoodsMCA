@@ -1,7 +1,10 @@
 package com.example.techwoodsmca;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.app.LauncherActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,7 +84,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        popupWindow.dismiss();
+                        Intent intent = new Intent(context, Eventregister.class);
+                        context.startActivity(intent);
+                        intent.putExtra("event_name", popupHead.getText().toString());
+                        context.startActivity(intent);
                     }
                 });
 
