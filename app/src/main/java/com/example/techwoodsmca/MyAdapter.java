@@ -84,13 +84,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(context, Eventregister.class);
-                        context.startActivity(intent);
                         String participants = popupParticipants.getText().toString();
                         int numParticipants = Integer.parseInt(participants.trim());
-                        intent.putExtra("event_name", popupHead.getText().toString());
-                        intent.putExtra("numParticipants", numParticipants);
-                        context.startActivity(intent);
+                        if(numParticipants>1) {
+                            Intent intent = new Intent(context, Eventregister.class);
+                            context.startActivity(intent);
+
+                            intent.putExtra("event_name", popupHead.getText().toString());
+                            intent.putExtra("numParticipants", numParticipants);
+                            context.startActivity(intent);
+                        }
+                        else{
+                            Intent intent = new Intent(context,Singleparticipant.class);
+
+                            intent.putExtra("event_name", popupHead.getText().toString());
+
+                            context.startActivity(intent);
+
+                        }
 //                        Intent intent = new Intent(context, Eventregister.class);
 
 //                        startActivity(intent);

@@ -9,7 +9,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="30dp"
             android:background="@drawable/custom_edittext"
             android:gravity="center_horizontal"
@@ -18,7 +18,7 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:padding="16dp"
                 android:id="@+id/layout">
 
@@ -49,15 +49,23 @@
                     android:hint="Last Name"
                     android:inputType="text"
                     android:minHeight="48dp" />
+                <TextView
 
-                <EditText
-                    android:id="@+id/dob_edittext"
-                    android:layout_width="match_parent"
+                    android:text="Date of Birth"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="Date of Birth"
-                    android:inputType="date"
-                    android:minHeight="48dp" />
+                    />
+
+                <DatePicker
+                    android:id="@+id/date_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"
+                    android:spinnersShown="true"
+                    android:layout_marginTop="8dp" />
+
 
                 <EditText
                     android:id="@+id/email_edittext"
@@ -95,18 +103,12 @@
                     android:inputType="text"
                     android:minHeight="48dp" />
 
-                <TextView
-                    android:text="College Proof (Bonafide/ID Card) File Upload"
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"/>
 
-                <Button
-                    android:text="Choose File"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"/>
+
+
+
+
+
 
 
 

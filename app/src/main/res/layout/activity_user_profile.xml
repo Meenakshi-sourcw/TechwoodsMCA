@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="John Doe"
+                android:text="Name"
                 android:textSize="24sp"/>
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="I'm a software developer with a passion for building great apps."/>
+                android:text="Bio"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="San Francisco, CA"/>
+                    android:text="location"/>
 
             </LinearLayout>
 
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="123-456-7890"/>
+                    android:text="contact number"/>
 
             </LinearLayout>
 
@@ -89,10 +89,11 @@
                     android:src="@drawable/ic_email"/>
 
                 <TextView
+                    android:id="@+id/profile_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="johndoe@email.com"/>
+                    android:text="email"/>
 
             </LinearLayout>
             <Button

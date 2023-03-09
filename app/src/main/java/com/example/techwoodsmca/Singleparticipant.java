@@ -3,7 +3,6 @@ package com.example.techwoodsmca;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,27 +25,21 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Eventregister extends AppCompatActivity {
+public class Singleparticipant extends AppCompatActivity {
 
-    public ArrayList<EditText> editTextList;
-    public EditText editText;
-    public TextView eventname;
     public EditText firstname, lastname, email, contact, college_name, regno;
     public DatePicker dob;
 
     public LinearLayout layout;
-     public String team_members_str;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eventregister);
-
-
+        setContentView(R.layout.activity_singleparticipant);
         firstname = findViewById(R.id.first_name_edittext);
         lastname = findViewById(R.id.last_name_edittext);
         email = findViewById(R.id.email_edittext);
@@ -64,26 +57,6 @@ public class Eventregister extends AppCompatActivity {
         layout = findViewById(R.id.layout);
         eventNameTextView.setText(eventName);
         Intent intent = getIntent();
-
-        if (intent.getIntExtra("numParticipants", 1) > 1 ) {
-
-
-            editTextList = new ArrayList<>();
-            TextView titleTextView = new TextView(this);
-            titleTextView.setText("Enter the team member name");
-            layout.addView(titleTextView);
-            for (int i = 1; i < intent.getIntExtra("numParticipants", 1); i++) {
-
-                editText = new EditText(this);
-                editText.setHint("Enter player " + (i + 1) + " name");
-                layout.addView(editText);
-                editTextList.add(editText);
-
-                // Add the ID of the dynamically generated EditText box to the ArrayList
-
-            }
-        }
-
         layout.setOrientation(LinearLayout.VERTICAL);
 
 
@@ -104,21 +77,17 @@ public class Eventregister extends AppCompatActivity {
 
 
 
-
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String event_name = eventNameTextView.getText().toString();
+                String first_name = firstname.getText().toString();
                 String last_name = lastname.getText().toString();
-                String email_id = email.getText().toString().trim();
+                String email_id = email.getText().toString();
                 String contact_no = contact.getText().toString();
                 String date = dob.getYear() + "-" + (dob.getMonth() + 1) + "-" + dob.getDayOfMonth();
                 String col = college_name.getText().toString();
                 String reg = regno.getText().toString();
-
-                String first_name = firstname.getText().toString();
                 if (TextUtils.isEmpty(first_name)) {
                     firstname.setError("Please enter your first name");
                 } else if (!first_name.matches("^[a-zA-Z]+$")) {
@@ -133,7 +102,7 @@ public class Eventregister extends AppCompatActivity {
 
 
 
-               else if (TextUtils.isEmpty(email_id)) {
+                else if (TextUtils.isEmpty(email_id)) {
                     email.setError("Please enter your email id");
                 } else if (!email_id.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
                     email.setError("Please enter a valid email id");
@@ -158,28 +127,17 @@ public class Eventregister extends AppCompatActivity {
                 } else if (!reg.matches("[0-9]+")) {
                     regno.setError("Please enter a valid register number");
                 }
-
-else {
-                    // Retrieve the values of the dynamically generated EditText boxes
-
-                    for (EditText editText : editTextList) {
-                        team_members_str = editText.getText().toString().trim();
-                        // You can now use the value to insert it into the MySQL database using Volley or any other network library
-                    }
-                    if (TextUtils.isEmpty(team_members_str)) {
-                        editText.setError("Please enter your first name");
-                    } else if (!first_name.matches("^[a-zA-Z]+$")) {
-                        editText.setError("Please enter a valid first name");
-                    }
-                    else{
-                        registerParticipant(event_name, first_name, last_name, email_id, contact_no, date, col, reg, team_members_str);
-
-                    }
-
-
-
+                else{
+                    registerParticipant(event_name, first_name, last_name, email_id, contact_no, date, col, reg);
 
                 }
+
+
+
+
+
+
+
             }
         });
         layout.addView(registerButton);
@@ -191,7 +149,8 @@ else {
 
 
 
-    private void registerParticipant(String event_name, String first_name, String last_name,String email_id,String contact_no,String date,String col,String reg,String team_members_str ) {
+
+    private void registerParticipant(String event_name, String first_name, String last_name,String email_id,String contact_no,String date,String col,String reg ) {
 
 
         // Set the URL of your PHP script
@@ -212,7 +171,7 @@ else {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             // on below line we are displaying a success toast message.
-                            Toast.makeText(Eventregister.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Singleparticipant.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                         catch (JSONException e) {
                             e.printStackTrace();
@@ -222,7 +181,7 @@ else {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Handle error
-                Toast.makeText(Eventregister.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Singleparticipant.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -246,21 +205,16 @@ else {
                 params.put("college_name", col);
                 params.put("regno", reg);
 
-               if(editTextList != null){
-                for (int i = 0; i < editTextList.size(); i++) {
-                    params.put("participant" + (i + 2), editTextList.get(i).getText().toString());
-                }}
-               else{
-                return params;}
                 return params;
+
             }
         };
-        Toast.makeText(Eventregister.this,"Registered Sucessfully",Toast.LENGTH_LONG).show();
+        Toast.makeText(Singleparticipant.this,"Registered Sucessfully",Toast.LENGTH_LONG).show();
+
         // Add the request to the RequestQueue
         queue.add(stringRequest);
+
     }
 
 
 }
-
-
