@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 // user login successful
                                 SharedPrefManager.getInstance(getApplicationContext())
                                         .userlogin(
-                                                obj.getInt("id"),
+                                                obj.getInt("user_id"),
                                                 obj.getString("username"),
                                                 obj.getString("email")
                                         );
